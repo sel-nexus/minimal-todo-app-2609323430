@@ -1,0 +1,183 @@
+{
+  "communities": {
+    "0": [
+      "frontend_package",
+      "frontend_package_allowscripts",
+      "frontend_package_allowscripts_esbuild_0_21_5",
+      "frontend_package_name",
+      "frontend_package_private",
+      "frontend_package_type",
+      "frontend_package_version",
+      "frontend_src_app_test",
+      "frontend_src_test_setup",
+      "frontend_vite_config",
+      "frontend_vitest_config",
+      "ref_jsdom",
+      "ref_testing_library_jest_dom",
+      "ref_testing_library_react",
+      "ref_testing_library_user_event",
+      "ref_types_node",
+      "ref_types_react",
+      "ref_types_react_dom",
+      "ref_typescript",
+      "ref_vite",
+      "ref_vitejs_plugin_react",
+      "ref_vitest"
+    ],
+    "1": [
+      "frontend_tsconfig",
+      "frontend_tsconfig_compileroptions",
+      "frontend_tsconfig_compileroptions_allowimportingtsextensions",
+      "frontend_tsconfig_compileroptions_esmoduleinterop",
+      "frontend_tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "frontend_tsconfig_compileroptions_isolatedmodules",
+      "frontend_tsconfig_compileroptions_jsx",
+      "frontend_tsconfig_compileroptions_lib",
+      "frontend_tsconfig_compileroptions_module",
+      "frontend_tsconfig_compileroptions_moduleresolution",
+      "frontend_tsconfig_compileroptions_noemit",
+      "frontend_tsconfig_compileroptions_nounusedlocals",
+      "frontend_tsconfig_compileroptions_nounusedparameters",
+      "frontend_tsconfig_compileroptions_resolvejsonmodule",
+      "frontend_tsconfig_compileroptions_skiplibcheck",
+      "frontend_tsconfig_compileroptions_strict",
+      "frontend_tsconfig_compileroptions_target",
+      "frontend_tsconfig_compileroptions_usedefineforclassfields",
+      "frontend_tsconfig_include"
+    ],
+    "2": [
+      "frontend_src_app",
+      "frontend_src_app_app",
+      "frontend_src_app_app_addtask",
+      "frontend_src_app_app_deletetask",
+      "frontend_src_app_app_handleinputchange",
+      "frontend_src_app_app_handleinputkeydown",
+      "frontend_src_app_app_handlesubmit",
+      "frontend_src_app_app_toggletask",
+      "frontend_src_app_task",
+      "frontend_src_index",
+      "frontend_src_main",
+      "frontend_src_main_rootelement",
+      "ref_react",
+      "ref_react_dom"
+    ],
+    "3": [
+      "frontend_package_devdependencies",
+      "frontend_package_devdependencies_jsdom",
+      "frontend_package_devdependencies_playwright_test",
+      "frontend_package_devdependencies_testing_library_jest_dom",
+      "frontend_package_devdependencies_testing_library_react",
+      "frontend_package_devdependencies_testing_library_user_event",
+      "frontend_package_devdependencies_types_node",
+      "frontend_package_devdependencies_types_react",
+      "frontend_package_devdependencies_types_react_dom",
+      "frontend_package_devdependencies_typescript",
+      "frontend_package_devdependencies_vite",
+      "frontend_package_devdependencies_vitejs_plugin_react",
+      "frontend_package_devdependencies_vitest"
+    ],
+    "4": [
+      "frontend_e2e_preflight_spec",
+      "frontend_e2e_todo_lifecycle_spec",
+      "frontend_playwright_config",
+      "ref_node_fs",
+      "ref_playwright_test"
+    ],
+    "5": [
+      "frontend_package_scripts",
+      "frontend_package_scripts_build",
+      "frontend_package_scripts_dev",
+      "frontend_package_scripts_preview",
+      "frontend_package_scripts_test"
+    ],
+    "6": [
+      "readme_minimal_todo_app",
+      "readme_stack_decision",
+      "readme_static_nginx_container",
+      "readme_task_behaviors",
+      "readme_task_session_state"
+    ],
+    "7": [
+      "frontend_index_html_main_entry",
+      "frontend_index_html_root_mount",
+      "frontend_index_html_todo_app"
+    ],
+    "8": [
+      "frontend_package_dependencies",
+      "frontend_package_dependencies_react",
+      "frontend_package_dependencies_react_dom"
+    ],
+    "9": [
+      "frontend_src_vite_env_d"
+    ]
+  },
+  "cohesion": {
+    "0": 0.11688311688311688,
+    "1": 0.10526315789473684,
+    "2": 0.18681318681318682,
+    "3": 0.15384615384615385,
+    "4": 0.4,
+    "5": 0.4,
+    "6": 0.4,
+    "7": 0.6666666666666666,
+    "8": 0.6666666666666666,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "frontend_tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 17
+    },
+    {
+      "id": "frontend_src_app_app",
+      "label": "App()",
+      "degree": 9
+    },
+    {
+      "id": "frontend_package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "ref_playwright_test",
+      "label": "@playwright/test",
+      "degree": 4
+    },
+    {
+      "id": "ref_vitest",
+      "label": "vitest",
+      "degree": 4
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 3
+    },
+    {
+      "id": "ref_testing_library_react",
+      "label": "@testing-library/react",
+      "degree": 3
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "degree": 3
+    },
+    {
+      "id": "frontend_src_app_app_addtask",
+      "label": "addTask()",
+      "degree": 3
+    },
+    {
+      "id": "readme_minimal_todo_app",
+      "label": "Minimal Todo App",
+      "degree": 3
+    }
+  ],
+  "surprises": [],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
