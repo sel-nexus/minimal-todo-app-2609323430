@@ -5,6 +5,8 @@ dist/
 frontend/dist/
 build/
 coverage/
+frontend/test-results/
+frontend/playwright-report/
 
 # Local environment and caches
 .env
