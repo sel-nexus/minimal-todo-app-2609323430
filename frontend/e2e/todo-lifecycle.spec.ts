@@ -11,6 +11,7 @@ test('complete task lifecycle preserves the deterministic browser contract', asy
 
   await page.goto('/');
   await expect(page).toHaveTitle('Todo App');
+  await page.screenshot({ path: 'test-results/todo-lifecycle-desktop.png', fullPage: true });
   await expect(page.getByRole('heading', { level: 1, name: 'Todo App' })).toBeVisible();
   await expect(page.getByTestId('empty-state')).toHaveText('No tasks yet.');
   await expect(page.getByTestId('todo-list')).toBeEmpty();
@@ -78,5 +79,42 @@ test('complete task lifecycle preserves the deterministic browser contract', asy
   await page.getByTestId('add-button').click();
   await expect(page.getByTestId('todo-item-1')).toBeVisible();
 
+  await page.screenshot({ path: 'test-results/todo-lifecycle-desktop.png', fullPage: true });
   expect(browserErrors).toEqual([]);
+});
+
+test('complete task journey at a mobile viewport', async ({ page }) => {
+  const browserErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error' || message.type() === 'warning') {
+      browserErrors.push(`console ${message.type()}: ${message.text()}`);
+    }
+  });
+  page.on('pageerror', (error) => browserErrors.push(`page error: ${error.message}`));
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await expect(page).toHaveTitle('Todo App');
+  await page.screenshot({ path: 'test-results/todo-lifecycle-mobile.png', fullPage: true });
+  await expect(page.getByRole('heading', { level: 1, name: 'Todo App' })).toBeVisible();
+  await expect(page.getByTestId('empty-state')).toBeVisible();
+
+  const input = page.getByRole('textbox', { name: 'New task' });
+  await input.fill('Mobile task');
+  await page.getByRole('button', { name: 'Add' }).click();
+  await expect(page.getByTestId('todo-title-1')).toHaveText('Mobile task');
+  await page.getByTestId('todo-checkbox-1').check();
+  await expect(page.getByTestId('todo-checkbox-1')).toBeChecked();
+  await page.getByTestId('todo-delete-1').click();
+  await expect(page.getByTestId('todo-list')).toBeEmpty();
+  await expect(page.getByTestId('empty-state')).toBeVisible();
+
+  await page.screenshot({ path: 'test-results/todo-lifecycle-mobile.png', fullPage: true });
+  expect(browserErrors).toEqual([]);
+});
+
+test('container static root serves the app entry document', async ({ request }) => {
+  const rootResponse = await request.get('http://127.0.0.1:4174/');
+  expect(rootResponse.status()).toBe(200);
+  expect(await rootResponse.text()).toContain('<div id="root"></div>');
 });

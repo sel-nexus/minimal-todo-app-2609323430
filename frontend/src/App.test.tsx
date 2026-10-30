@@ -30,6 +30,21 @@ describe('Todo App task lifecycle', () => {
     expect(screen.getByTestId('empty-state')).not.toBeVisible();
   });
 
+  it('advances task IDs after each successful add', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const input = screen.getByRole('textbox', { name: 'New task' });
+
+    await user.type(input, 'First successful task');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    expect(screen.getByTestId('todo-item-1')).toBeInTheDocument();
+
+    await user.type(input, 'Second successful task');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    expect(screen.getByTestId('todo-item-2')).toBeInTheDocument();
+    expect(screen.getByTestId('todo-list').children).toHaveLength(2);
+  });
+
   it('adds exactly one task when Enter is pressed in the focused input', async () => {
     const user = userEvent.setup();
     render(<App />);
@@ -60,6 +75,24 @@ describe('Todo App task lifecycle', () => {
     await user.type(input, 'First valid task');
     await user.click(screen.getByRole('button', { name: 'Add' }));
     expect(screen.getByTestId('todo-item-1')).toBeInTheDocument();
+  });
+
+  it('rejects a blank submission without consuming an ID before the next successful add', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const input = screen.getByRole('textbox', { name: 'New task' });
+
+    await user.type(input, '   ');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    expect(input).toHaveValue('   ');
+    expect(screen.getByTestId('todo-list')).toBeEmptyDOMElement();
+    expect(screen.queryByTestId('todo-item-1')).not.toBeInTheDocument();
+
+    await user.clear(input);
+    await user.type(input, 'First valid task');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    expect(screen.getByTestId('todo-item-1')).toBeInTheDocument();
+    expect(screen.queryByTestId('todo-item-2')).not.toBeInTheDocument();
   });
 
   it('renders tasks in creation order with consistent sequential task selectors', async () => {
